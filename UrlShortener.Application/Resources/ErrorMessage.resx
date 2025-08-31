@@ -36,4 +36,7 @@
     <data name="InvalidUrl" xml:space="preserve">
         <value>Invalid url</value>
     </data>
+    <data name="InvalidPagination" xml:space="preserve">
+        <value>Pagination parametres are invalid</value>
+    </data>
 </root>

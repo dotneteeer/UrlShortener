@@ -6,7 +6,7 @@ using UrlShortener.Domain.Results;
 
 namespace UrlShortener.Api.Controllers;
 
-public class UrlShortenerController(IUrlService urlService) : BaseController
+public class UrlController(IUrlService urlService) : BaseController
 {
     /// <summary>
     ///     Handles the creation of a shortened URL based on the provided original URL.

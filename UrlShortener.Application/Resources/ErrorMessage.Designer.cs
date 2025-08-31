@@ -69,6 +69,15 @@ namespace UrlShortener.Application.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pagination parametres are invalid.
+        /// </summary>
+        public static string InvalidPagination {
+            get {
+                return ResourceManager.GetString("InvalidPagination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid url.
         /// </summary>
         public static string InvalidUrl {

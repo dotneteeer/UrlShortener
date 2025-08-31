@@ -1,4 +1,5 @@
 using System.Security.Cryptography;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using UrlShortener.Application.Enums;
@@ -6,13 +7,17 @@ using UrlShortener.Application.Resources;
 using UrlShortener.Application.Settings;
 using UrlShortener.Domain.Dtos;
 using UrlShortener.Domain.Entities;
+using UrlShortener.Domain.Extensions;
 using UrlShortener.Domain.Interfaces.Repository;
 using UrlShortener.Domain.Interfaces.Services;
 using UrlShortener.Domain.Results;
 
 namespace UrlShortener.Application.Services;
 
-public class UrlService(IBaseRepository<ShortenedUrl> urlRepository, IOptions<BusinessRules> businessRules)
+public class UrlService(
+    IBaseRepository<ShortenedUrl> urlRepository,
+    IOptions<BusinessRules> businessRules,
+    IMapper mapper)
     : IUrlService
 {
     private readonly BusinessRules _businessRules = businessRules.Value;
@@ -20,7 +25,7 @@ public class UrlService(IBaseRepository<ShortenedUrl> urlRepository, IOptions<Bu
     public async Task<BaseResult<ShortenedUrlDto>> ShortenUrlAsync(CreateShortenedUrlDto dto,
         CancellationToken cancellationToken = default)
     {
-        if (!IsUrl(dto.OriginalUrl))
+        if (!dto.OriginalUrl.IsUrl())
             return BaseResult<ShortenedUrlDto>.Failure(ErrorMessage.InvalidUrl, (int)ErrorCodes.InvalidUrl);
 
         var url = await urlRepository.GetAll()
@@ -39,7 +44,8 @@ public class UrlService(IBaseRepository<ShortenedUrl> urlRepository, IOptions<Bu
         await urlRepository.CreateAsync(url, cancellationToken);
         await urlRepository.SaveChangesAsync(cancellationToken);
 
-        return BaseResult<ShortenedUrlDto>.Success(new ShortenedUrlDto(dto.OriginalUrl, url.ShortUrl));
+        var urlDto = mapper.Map<ShortenedUrlDto>(url);
+        return BaseResult<ShortenedUrlDto>.Success(urlDto);
     }
 
     public async Task<BaseResult<ShortenedUrlDto>> GetOriginalUrlAsync(GetShortenedUrlDto dto,
@@ -53,7 +59,8 @@ public class UrlService(IBaseRepository<ShortenedUrl> urlRepository, IOptions<Bu
         url.AccessCount++;
         await urlRepository.SaveChangesAsync(cancellationToken);
 
-        return BaseResult<ShortenedUrlDto>.Success(new ShortenedUrlDto(url.OriginalUrl, url.ShortUrl));
+        var urlDto = mapper.Map<ShortenedUrlDto>(url);
+        return BaseResult<ShortenedUrlDto>.Success(urlDto);
     }
 
     private static string GenerateRandomString(int length, HashSet<string> existingStrings)
@@ -69,11 +76,5 @@ public class UrlService(IBaseRepository<ShortenedUrl> urlRepository, IOptions<Bu
         } while (existingStrings.Contains(str));
 
         return str;
-    }
-
-    private static bool IsUrl(string? url)
-    {
-        return Uri.TryCreate(url?.Trim(), UriKind.Absolute, out var uri)
-               && (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps);
     }
 }

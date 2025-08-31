@@ -24,6 +24,7 @@
         <ProjectReference Include="..\UrlShortener.Application\UrlShortener.Application.csproj"/>
         <ProjectReference Include="..\UrlShortener.Domain\UrlShortener.Domain.csproj"/>
         <ProjectReference Include="..\UrlShortener.DAL\UrlShortener.DAL.csproj"/>
+        <ProjectReference Include="..\UrlShortener.GraphQl\UrlShortener.GraphQl.csproj"/>
     </ItemGroup>
 
 </Project>

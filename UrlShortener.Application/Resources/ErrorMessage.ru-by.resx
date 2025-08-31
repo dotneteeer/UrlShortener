@@ -27,4 +27,7 @@
     <data name="InvalidUrl" xml:space="preserve">
         <value>Неверный url</value>
     </data>
+    <data name="InvalidPagination" xml:space="preserve">
+        <value>Параметры пагинации невалидны</value>
+    </data>
 </root>

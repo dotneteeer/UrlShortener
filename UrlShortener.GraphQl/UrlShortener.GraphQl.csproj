@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="GraphQL.Server.Ui.Voyager" Version="8.2.0"/>
+        <PackageReference Include="HotChocolate.ApolloFederation" Version="15.1.5"/>
+        <PackageReference Include="HotChocolate.AspNetCore" Version="15.1.5"/>
+        <PackageReference Include="HotChocolate.Data" Version="15.1.5"/>
+        <PackageReference Include="HotChocolate.Types.OffsetPagination" Version="15.1.5"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\UrlShortener.Application\UrlShortener.Application.csproj"/>
+    </ItemGroup>
+
+</Project>
