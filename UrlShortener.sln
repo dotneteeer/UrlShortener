@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{E3BFD839-556B-4D77-A3F0-ED4356C9D01A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{26CA4EB6-4E5C-4308-964D-074786FCA462}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{3B695A6B-882C-441E-972D-1B49989A5814}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Api", "UrlShortener.Api\UrlShortener.Api.csproj", "{4615674F-84E8-40FF-963D-9D0AA4D1F862}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.DAL", "UrlShortener.DAL\UrlShortener.DAL.csproj", "{A259C442-C84C-42B2-9CEB-1A865C0A8083}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Application", "UrlShortener.Application\UrlShortener.Application.csproj", "{F7396083-E598-45A8-B25F-69C3ADA8DDCD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UrlShortener.Domain", "UrlShortener.Domain\UrlShortener.Domain.csproj", "{B859EAFC-5106-4FD3-A663-C3D0BF9D0010}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8B5E4DC7-BA93-4B2F-B67A-D02A020B2B49}"
+	ProjectSection(SolutionItems) = preProject
+		docker-compose.yml = docker-compose.yml
+		.env = .env
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4615674F-84E8-40FF-963D-9D0AA4D1F862}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4615674F-84E8-40FF-963D-9D0AA4D1F862}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4615674F-84E8-40FF-963D-9D0AA4D1F862}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4615674F-84E8-40FF-963D-9D0AA4D1F862}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A259C442-C84C-42B2-9CEB-1A865C0A8083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A259C442-C84C-42B2-9CEB-1A865C0A8083}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A259C442-C84C-42B2-9CEB-1A865C0A8083}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A259C442-C84C-42B2-9CEB-1A865C0A8083}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7396083-E598-45A8-B25F-69C3ADA8DDCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7396083-E598-45A8-B25F-69C3ADA8DDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7396083-E598-45A8-B25F-69C3ADA8DDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7396083-E598-45A8-B25F-69C3ADA8DDCD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B859EAFC-5106-4FD3-A663-C3D0BF9D0010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B859EAFC-5106-4FD3-A663-C3D0BF9D0010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B859EAFC-5106-4FD3-A663-C3D0BF9D0010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B859EAFC-5106-4FD3-A663-C3D0BF9D0010}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4615674F-84E8-40FF-963D-9D0AA4D1F862} = {3B695A6B-882C-441E-972D-1B49989A5814}
+		{A259C442-C84C-42B2-9CEB-1A865C0A8083} = {26CA4EB6-4E5C-4308-964D-074786FCA462}
+		{F7396083-E598-45A8-B25F-69C3ADA8DDCD} = {E3BFD839-556B-4D77-A3F0-ED4356C9D01A}
+		{B859EAFC-5106-4FD3-A663-C3D0BF9D0010} = {E3BFD839-556B-4D77-A3F0-ED4356C9D01A}
+	EndGlobalSection
+EndGlobal
