@@ -36,7 +36,7 @@ public class UrlShortenerController(IUrlService urlService) : BaseController
     ///     <see cref="BaseResult{ShortenedUrlDto}" /> includes the original URL and shortened URL, or an appropriate error
     ///     message if the operation fails.
     /// </returns>
-    [HttpGet("{shortenedUrl}")]
+    [HttpGet("~/{shortenedUrl}")] // To make the link short, we use "~/" to override the controller route
     public async Task<ActionResult<BaseResult<ShortenedUrlDto>>> RedirectToOriginalUrl(string shortenedUrl,
         CancellationToken cancellationToken)
     {

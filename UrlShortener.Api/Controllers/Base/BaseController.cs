@@ -6,7 +6,7 @@ namespace UrlShortener.Api.Controllers.Base;
 
 /// <inheritdoc />
 [Consumes(MediaTypeNames.Application.Json)]
-[Route("")]
+[Route("api/v{version:apiVersion}/[controller]")]
 [ProducesResponseType(StatusCodes.Status200OK)]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]

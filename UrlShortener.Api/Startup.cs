@@ -1,4 +1,5 @@
 using System.Reflection;
+using Asp.Versioning;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.OpenApi.Models;
@@ -19,7 +20,21 @@ public static class Startup
     public static void AddSwagger(this IServiceCollection services)
     {
         const string apiVersion = "v1";
+        const bool assumeDefaultVersionWhenUnspecified = true;
+        var defaultApiVersion = new ApiVersion(1, 0);
 
+        services.AddApiVersioning(options =>
+            {
+                options.DefaultApiVersion = defaultApiVersion;
+                options.AssumeDefaultVersionWhenUnspecified = assumeDefaultVersionWhenUnspecified;
+            })
+            .AddApiExplorer(options =>
+            {
+                options.DefaultApiVersion = defaultApiVersion;
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+                options.AssumeDefaultVersionWhenUnspecified = assumeDefaultVersionWhenUnspecified;
+            });
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(options =>
         {
