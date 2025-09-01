@@ -21,7 +21,7 @@ builder.Services.AddDataAccessLayer(builder.Configuration);
 builder.Services.AddApplication();
 
 builder.Host.AddLogging();
-
+builder.Services.AddCors(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 
@@ -37,6 +37,7 @@ app.UseRouting();
 app.MapControllers();
 app.UseLocalization();
 app.UseGraphQl();
+app.UseCors("DefaultCorsPolicy");
 
 await builder.Services.MigrateDatabaseAsync();
 

@@ -10,7 +10,7 @@
       - url-shortener-network
     environment:
       ConnectionStrings__MariaDb: Server=db;Port=3306;Database=urlshortener;User=urlshortener_user;Password=${MARIADB_PASSWORD};TreatTinyAsBoolean=true;
-      AppStartupSettings__CorsAllowedOrigins: https://localhost:5000
+      AppStartupSettings__CorsAllowedOrigins: http://127.0.0.1:5500
 
   db:
     image: mariadb:latest
