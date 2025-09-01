@@ -1,4 +1,17 @@
 ﻿services:
+  url-shortener:
+    image: maratkk/url-shortener
+    container_name: url-shortener
+    depends_on:
+      - db
+    ports:
+      - "8085:8080"
+    networks:
+      - url-shortener-network
+    environment:
+      ConnectionStrings__MariaDb: Server=db;Port=3306;Database=urlshortener;User=urlshortener_user;Password=${MARIADB_PASSWORD};TreatTinyAsBoolean=true;
+      AppStartupSettings__CorsAllowedOrigins: https://localhost:5000
+
   db:
     image: mariadb:latest
     container_name: mariadb
@@ -9,6 +22,8 @@
       MARIADB_USER: urlshortener_user
       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
       MARIADB_ROOT_HOST: '%'
+    networks:
+      - url-shortener-network
     ports:
       - "3306:3306"
     volumes:
@@ -16,5 +31,6 @@
 
 volumes:
   mariadb_data:
-    
+networks:
+  url-shortener-network:
 
